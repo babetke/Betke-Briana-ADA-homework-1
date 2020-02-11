@@ -1,0 +1,221 @@
+---
+title: "Betke-Briana-ADA-homework-1"
+author: "Briana Betke"
+date: "2/9/2020"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Homework 1
+This is an Rmarkdown of my work for challenges 1-4 of homework 1! YAY!
+
+#### Step 1. Create a vector called quote. Remove punctuation because I am *ambitious*. 
+```{r challenge 1}
+# Create quote vector
+quote <- c("There is grandeur in this view of life, with its several powers, having been originally breathed by the Creator into a few forms or into one; and that, whilst this planet has gone circling on according to the fixed law of gravity, from so simple a beginning endless forms most beautiful and most wonderful have been, and are being evolved.")
+# Removing punctuation
+quote <- gsub("[[:punct:]]","", quote)
+quote
+```
+
+#### Step 2. Split the vector into a new vector called split_quote.
+```{r}
+library(stringr)
+# Split the vector by word.
+split_quote <- str_split(quote, " ")
+split_quote
+```
+
+#### Step 3. Extract every 4th element from the Vector. Name it every_fourth. 
+```{r}
+# Take every forth word
+every_fourth <- split_quote[[1]][seq(from = 1, to = 60, by = 4)]
+every_fourth
+```
+
+#### Step 4. Rearrange every_forth in reverse alphabetical order.
+```{r}
+# Using the sort function, make sure to indicate TRUE on decreasing.
+sort(every_fourth, decreasing = TRUE)
+```
+
+
+### Challenge 2: Adventures with Matracies
+#### Step 1. Create Matrix that contains 8 rows and 10 columns, named m1. Must have odd integers from 1 to 159.
+```{r}
+# Using a sequence to fill matrix with odd integers.
+m1 <- matrix(data = seq(from = 1, to = 159, by = 2), nrow = 8, ncol = 10)
+m1
+```
+
+#### Step 2. Extract and print the elements in row 5, column 2 with *single bracket notation*.
+```{r}
+m1[5,2] # Indicate row 5 and column 2 in single brackets
+```
+
+#### Step 3. Extract and print the contents of rows 5 to 7 of the matrix.
+```{r}
+m1[5:7, ]
+```
+
+#### Step 4. Extract the contents of (row 3, column 4) to (row 6, column 9) as a new variable, m2. Find the class or mode.
+```{r}
+# Extract the rows and columns, name it m2
+m2 <- m1[3:6,4:9]
+m2 # View the matrix
+
+# Get the class of m2
+class(m2)
+
+# Get the mode
+mode(m2)
+```
+
+### Challenge 3: No Dissarry with this Array
+#### Step 1. Create an array with 4 dimensions and 400 elements with numbers 400 to 1.
+```{r}
+# Create array. Place teh 400 before 1 for the data to be in decreasing order.
+a <- array(data = 400:1, dim = c(5, 5, 4, 4))
+a
+```
+
+#### Step 2. What would return with the following code?
+```{r}
+a[1, 1, 1, 2]
+
+a[2, 3, 2, ]
+
+a[1:5, 1:5, 3, 3]
+```
+
+### Challenge 4: Torture with Lists, but Primates are Cute. So it makes it ok.
+To create the list of primates, I started by making character vectors of the families. Then those families were stored to respective infraorders. Then the respective infraorders were combined into two lists, representing the two suborders Strepsirhini and Haplorini. Those were then stored together as primates, the order. ~~I tried!~~
+
+#### Step 1. Creating Strepsirhini
+
+Starting with the infraorder lorisiformes
+```{r}
+# Make a list for the infraorder lorisiformes 
+lorisFam <- c("Lorisidae", "Galagidae") # create a character vector of superfamily 
+lorisSuper <- list(lorisFam) # Make a list
+names(lorisSuper) <- "lorisoidea" # Name it super family name
+lorisSuper # View the list 
+```
+
+Then infraorder lemuriformes
+```{r}
+# Do the same for lemuriformes
+lemurFam<- c("Cheirogaleidae","Lepilemuridae","Indriidae","Lemuridae","Daubentoniidae")
+lemurSuper <- list(lemurFam)
+names(lemurSuper) <- "Lemuroidea"
+lemurSuper 
+```
+
+Put both infraorders together to make suborder Strepsirhini
+```{r}
+# Suborder strepsirhini 
+strepsirhini <- list(lorisSuper,lemurSuper) # make a list of superfamilies
+names(strepsirhini) <- c("lorisiformes","lemuriformes") # Name them by infraorder
+strepsirhini
+```
+
+#### Step 2. Creating Haplorhini
+
+Starting with Tarsiiformes
+```{r}
+# Tarsiiformes
+tarsirFam <- "Tarsiidae"
+tarsirSuper <- list(tarsirFam)
+names(tarsirSuper) <- "Tarsioidea"
+tarsirSuper
+```
+
+Then the Simiiformes. 
+Beginning with platyrrhini parvorder.
+```{r}
+# Parvorder: Platyrrhini
+ceboFam <- c("Cebidae", "Atelidae", "Pitheciidae")
+ceboSuper <- list(ceboFam)
+names(ceboSuper) <- "Ceboidea"
+ceboSuper
+```
+
+Catarrhini Next.
+```{r}
+# Parvorder catarrhini
+# superfam Hominids
+hominFam <- c("Hylobatidae", "Hominidae")
+hominSuper <- list(hominFam)
+names(hominSuper) <- "Hominoidea"
+hominSuper
+
+# other superfam
+cercFam <- "Cercopithecidae"
+cercSuper <- list(cercFam)
+names(cercSuper) <- "Cercopithecoidea"
+cercSuper
+```
+
+Putting parvorders together to make Catarrhini
+```{r}
+# create list for Catarrhini
+catarr <- list(hominSuper, cercSuper)
+catarr
+```
+
+Put the infraorders together
+```{r}
+# Create list for Simiiformes
+simiInfra <- list(ceboSuper,catarr)
+names(simiInfra) <- c("Platyrrhini","Catarrhini")
+simiInfra
+```
+
+The final step to make Haplorhini
+```{r}
+# combine Tarsiiformes and Simiiformes
+haplor <- list(tarsirSuper,simiInfra)
+names(haplor) <- c("Tarsiiformes","Simiiformes")
+haplor
+```
+
+#### Step 3. Combining the suborders and naming it primate
+```{r}
+# put Strepsirhini and Haplorhini together and call it primates
+primates <- list(strepsirhini,haplor)
+names(primates) <- c("Strepsirhini","Haplorhini")
+primates
+```
+
+#### Step 4. Extract Platyrrhini and name it nwm.
+```{r}
+# Extract Platyrrhini and name it nwm.
+nwm <- primates[["Haplorhini"]][["Simiiformes"]][["Platyrrhini"]]
+nwm
+```
+
+#### Step 5.Class and mode of nwm.
+
+First, get the class.
+```{r}
+# Get the class of nwm
+class(nwm)
+```
+
+Then the mode.
+```{r}
+# Get the Mode of nwm
+mode(nwm)
+```
+
+#### Step 6. $ sign notation to extract tarsirs.
+```{r}
+# $ sign notation to extract tarsirs
+primates$Haplorhini$Tarsiiformes$Tarsioidea
+```
+
