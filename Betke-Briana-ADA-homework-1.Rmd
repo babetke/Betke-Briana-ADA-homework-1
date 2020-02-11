@@ -3,9 +3,9 @@ title: "Betke-Briana-ADA-homework-1"
 author: "Briana Betke"
 date: "2/9/2020"
 output:
-  word_document: default
-  pdf_document: default
   html_document: default
+  pdf_document: default
+  word_document: default
 ---
 
 ```{r setup, include=FALSE}
