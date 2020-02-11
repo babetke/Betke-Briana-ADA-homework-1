@@ -79,7 +79,7 @@ mode(m2)
 ### Challenge 3: No Dissarry with this Array
 #### Step 1. Create an array with 4 dimensions and 400 elements with numbers 400 to 1.
 ```{r}
-# Create array. Place teh 400 before 1 for the data to be in decreasing order.
+# Create array. Place the 400 before 1 for the data to be in decreasing order.
 a <- array(data = 400:1, dim = c(5, 5, 4, 4))
 a
 ```
