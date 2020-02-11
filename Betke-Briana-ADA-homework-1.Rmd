@@ -15,6 +15,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ## Homework 1
 This is an Rmarkdown of my work for challenges 1-4 of homework 1! YAY!
 
+### Challenge 1: Playing with quotes, not feelings.
 #### Step 1. Create a vector called quote. Remove punctuation because I am *ambitious*. 
 ```{r challenge 1}
 # Create quote vector
