@@ -3,9 +3,9 @@ title: "Betke-Briana-ADA-homework-1"
 author: "Briana Betke"
 date: "2/9/2020"
 output:
+  html_document: default
   word_document: default
   pdf_document: default
-  html_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -25,7 +25,7 @@ quote
 ```
 
 #### Step 2. Split the vector into a new vector called split_quote.
-Be sure to load in the stringr package to used the str_split function.
+Be sure to load in the stringr package to use the str_split function.
 ```{r}
 library(stringr)
 # Split the vector by word.
